@@ -1,0 +1,20 @@
+#!/usr/bin/env python
+print "Welcome to the Self-learning dictionary!"
+
+dictionary = {}
+
+try:
+    while True:
+        word = raw_input("Please enter a word : ")
+        try:
+            print dictionary[word]
+        except KeyError:
+            ip = raw_input ("Sorry, not found. Add to Dictionary? (Y/N) : ")
+            if ip == 'Y' or ip == 'y':
+                meaning = raw_input("Enter the new Meaning: ")
+                dictionary[word] = meaning
+                print "Thank You!"
+
+except KeyboardInterrupt:
+    print "\nThank you!"
+

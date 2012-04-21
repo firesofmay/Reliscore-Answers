@@ -1,0 +1,6 @@
+Code,Stock,ReOrder,Cost,
+ProcureDays,Quantity,Date
+foo,4,5,0.73,6,3,12-Oct-2012,4,14-Oct-2012
+bar,30,2,0.93,8
+baz,15,10,3.28,4
+wot,8,5,3.27,5

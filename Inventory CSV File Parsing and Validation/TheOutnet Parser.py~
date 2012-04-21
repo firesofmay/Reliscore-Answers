@@ -1,0 +1,30 @@
+from fashiondb.scrape.parsers import *
+import re
+from urlparse import urlparse
+       
+
+class TheOutnetLinkParser(PurchaseLinkParser):
+      def is_available(self):
+        if self.status!=200:
+             return False
+          #Check if the sizeSelect value is out of stock
+
+        check = urlparse(self.final_url)
+        if check.path == "/":
+            return False
+        return True
+        
+      def price(self):
+        price = self.soup.find('span', {'class': 'price-now'})
+        if price is not None:
+            return re.sub(r'[^0-9\.]', '', price.text)
+        else:
+            price = soup.find('span', {'class': 'price-outnet'})
+            return re.sub(r'[^0-9\.]', '', price.text)
+
+
+
+
+
+
+        

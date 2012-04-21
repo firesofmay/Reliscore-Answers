@@ -1,0 +1,44 @@
+from BeautifulSoup import BeautifulSoup
+import requests
+import re
+
+
+from fashiondb.scrape.parsers import *
+import re
+
+class EndlessLinkParser(PurchaseLinkParser):
+      def is_available(self):
+          if self.status!=200:
+             return False
+             
+          #Check if the sizeSelect value is out of stock
+        price = self.soup.find('span', {'id' : 'mainPrice'})
+        price = price.text
+        
+        if price is None:
+              return False
+        return True
+
+      def price(self):
+      
+        price = self.soup.find('span', {'id' : 'mainPrice'})
+        price = price.text
+        
+        if '-' in price:
+            price = price.split('-')[0]
+
+        return re.sub(r'[^0-9\.]', '',price)
+        
+
+
+
+
+
+
+
+
+
+######################
+price = soup.find('span', {'id' : 'mainPrice'}).text
+if price[0] == '$': price = price[1:]
+price

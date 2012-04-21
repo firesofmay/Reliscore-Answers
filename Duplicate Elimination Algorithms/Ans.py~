@@ -1,0 +1,7 @@
+data = open("/media/New Volume/work/Reliscore/Duplicate Elimination Algorithms/100ints.txt").read().split("\n")
+s = set()
+for d in data:
+    if d not in s:
+        s.add(d)
+    else:
+        print "Found : " +str(d)
